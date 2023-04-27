@@ -21,6 +21,8 @@ from .models import Student
 class StudentSerializer(serializers.ModelSerializer):
     # number = serializers.IntegerField(write_only=True)
     born_year = serializers.SerializerMethodField()# for add new method, read only
+    path = serializers.StringRelatedField()
+    path_id = serializers.IntegerField()
     class Meta:
         model = Student
         fields = '__all__'

@@ -11,7 +11,7 @@ class Path(models.Model):
 
 
 class Student(models.Model):
-    path= models.ForeignKey(Path, relatedname='Student', on_delete=models.CASCADE)
+    path= models.ForeignKey(Path, related_name='Student', on_delete=models.CASCADE)
     fname = models.CharField(max_length=30)
     lname = models.CharField(max_length=30)
     number = models.IntegerField(blank=True, null=True)
