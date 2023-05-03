@@ -19,7 +19,7 @@ from .views import (
     )
 
 router = routers.DefaultRouter()
-router.register( "student", StudentMVS)# app and class of view
+router.register( "student", StudentMVS)
 router.register( "path", PathMVS)
 
 urlpatterns = [
