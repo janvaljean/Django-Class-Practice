@@ -23,7 +23,7 @@ from .models import Student, Path
 
 class StudentSerializer(serializers.ModelSerializer):
     # number = serializers.IntegerField(write_only=True)
-    born_year = serializers.SerializerMethodField() # read_only
+    # born_year = serializers.SerializerMethodField() # read_only
     path = serializers.StringRelatedField() # read_only
     path_id = serializers.IntegerField()
     
@@ -33,10 +33,10 @@ class StudentSerializer(serializers.ModelSerializer):
         # fields = ("first_name", "last_name", "number", "born_year")
         # exclude = ("number",)
         
-    def get_born_year(self, obj):
-        import datetime
-        current_time = datetime.datetime.now()
-        return current_time.year - obj.age
+    # def get_born_year(self, obj):
+    #     import datetime
+    #     current_time = datetime.datetime.now()
+    #     return current_time.year - obj.age
     
     
 class PathSerializer(serializers.ModelSerializer):

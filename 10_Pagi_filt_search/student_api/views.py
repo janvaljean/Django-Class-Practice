@@ -217,31 +217,22 @@ class StudentDetailCV(RetrieveUpdateDestroyAPIView):
      
     
 #! Viewsets
+from .pagination import MySmallNumberPagination, MyLimitOffsetPagination, MyCursorPagination
 
 class StudentMVS(ModelViewSet):
     queryset = Student.objects.all()
-    serializer_class = StudentSerializer  
+    serializer_class = StudentSerializer
+    pagination_class =  MyCursorPagination
     
     
-    @action(detail=False, methods=["GET"])
-    def student_count(self, request):
-        count = {
-            "student-count" : self.queryset.count()
-        }
-        return Response(count)
+   
     
 class PathMVS(ModelViewSet):
     queryset= Path.objects.all()
     serializer_class = PathSerializer
    
     
-    @action(detail=True)
-    def student_names(self, request, pk=None):
-        path = self.get_object()
-        # path2 = self.queryset.get(id=pk)
-        # path3 = Path.objects.get(id=pk)
-        students = path.students.all()
-        return Response([i.first_name for i in students])
+  
         
     
     
